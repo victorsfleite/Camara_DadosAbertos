@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 
 public class TelaDetalhes extends javax.swing.JFrame {
     
+    Detalhes detalhesDeputados = new Detalhes();
+    
     public TelaDetalhes(ModeloDeputados deputado) {
         initComponents();
         campoTextoUf.setText(deputado.getUf());

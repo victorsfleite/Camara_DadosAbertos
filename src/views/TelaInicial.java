@@ -150,7 +150,7 @@ public class TelaInicial extends javax.swing.JFrame {
             public void run() {
                 for(int i=0; i<101; i++) {
                     try {
-                        sleep(3001);
+                        sleep(2001);
                         barraProgresso.setValue(i);
                         if(barraProgresso.getValue() <= 10) {
                             labelBarraProgresso.setText("Conectando ao WebService da Câmara dos Deputados...");
@@ -191,6 +191,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 
                 ControleTabela controleTabela = new ControleTabela();
                 controleTabela.gerarTabela(deputados);
+                //controleTabela.gerarTabela(partidos);
             }
         }.start();
     }//GEN-LAST:event_menuItemConectarActionPerformed

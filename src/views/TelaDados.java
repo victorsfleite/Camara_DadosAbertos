@@ -3,6 +3,7 @@ package views;
 import controllers.ControleTabela;
 import controllers.ControlePartidosRepetidos;
 import edu.unb.fga.dadosabertos.Deputado;
+import edu.unb.fga.dadosabertos.Detalhes;
 import java.util.List;
 import javax.swing.ListSelectionModel;
 import models.CamaraDadosAbertos;
@@ -15,14 +16,14 @@ public class TelaDados extends javax.swing.JInternalFrame {
     private ModeloDeputados deputado = new ModeloDeputados();
     private TableRowSorter<ModeloTabela> sorter;
     private ModeloTabela tabelaDeputados = CamaraDadosAbertos.getTabelaDeputados();
-    private ModeloTabela tabelaPartidos = ControleTabela.eliminarPartidosRepetidos();
+    //private ModeloTabela tabelaPartidos = ControleTabela.eliminarPartidosRepetidos();
     
     
     
     public TelaDados() {
         initComponents();
         preencherDadosTabela(tabelaDeputados);
-        preencherDadosTabela(tabelaPartidos);
+        //preencherDadosTabela(tabelaPartidos);
     }
 
     @SuppressWarnings("unchecked")
@@ -183,6 +184,7 @@ public class TelaDados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botaoIrActionPerformed
 
     private void botaoInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoInfoActionPerformed
+        
         TelaDetalhes telaDetalhes = new TelaDetalhes(deputado);
         telaDetalhes.setVisible(true);
        
@@ -276,7 +278,7 @@ public class TelaDados extends javax.swing.JInternalFrame {
         
         tabelaDadosPartidos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
-        sorter = new TableRowSorter<ModeloTabela>(this.tabelaPartidos);
+        //sorter = new TableRowSorter<ModeloTabela>(this.tabelaPartidos);
         tabelaDadosPartidos.setRowSorter(sorter);
         
     }

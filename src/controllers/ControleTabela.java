@@ -18,42 +18,22 @@ public class ControleTabela {
         ArrayList linhasDadosDeputados = new ArrayList();
         ArrayList linhasDadosPartidos = new ArrayList();
         String[] colunasDadosDeputados = new String[]{"Nome", "Partido", "Estado", "E-mail", "Telefone", "Condição", "Sexo", "ID",
-                                                      "Matrícula","Nome Parlamentar", "Gabinete", "Anexo", "Link da Foto",
-                                                      "UF Atual", "Situação Atual", "Nascimento", "Falecimento","Número de Legislatura" };
-        String[] colunasDadosPartidos = new String[]{"ID", "Sigla", "Nome do Partido"};
+                                                      "Matrícula","Nome Parlamentar", "Gabinete", "Anexo"};
         
         for(Deputado deputado: deputados) {
-            
-            try {
-                    deputado.obterDetalhes();
-                    System.out.print("-");
-                } catch (IOException | JAXBException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro na obtenção dos detalhes!\nErro:"+ erro.getMessage());
-                }
-            
-            Detalhes detalhes = deputado.getDetalhes();
         
             linhasDadosDeputados.add(new Object[]{deputado.getNome(), deputado.getPartido(), deputado.getUf(), deputado.getEmail(),
                                                   deputado.getFone(), deputado.getCondicao(), deputado.getSexo(),
                                                   deputado.getIdeCadastro(), deputado.getMatricula(), deputado.getNomeParlamentar(),
-                                                  deputado.getGabinete(), deputado.getAnexo(), deputado.getUrlFoto(), detalhes.getUfRepresentacaoAtual(),
-                                                  detalhes.getSituacaoNaLegislaturaAtual(), detalhes.getDataNascimento(), 
-                                                  detalhes.getDataFalecimento(), detalhes.getNumLegislatura()});
-            
-            Partido partidos = detalhes.getPartido();
-            
-            linhasDadosPartidos.add(new Object[]{partidos.getIdPartido(), partidos.getSigla(), partidos.getNome()});
+                                                  deputado.getGabinete(), deputado.getAnexo()});
         }
         
         ModeloTabela tabelaDeputados = new ModeloTabela(linhasDadosDeputados, colunasDadosDeputados);
-        CamaraDadosAbertos.setTabelaDeputados(tabelaDeputados);
-        ModeloTabela tabelaPartidos = new ModeloTabela(linhasDadosPartidos, colunasDadosPartidos);
-        CamaraDadosAbertos.setTabelaPartidos(tabelaPartidos);
-        
+        CamaraDadosAbertos.setTabelaDeputados(tabelaDeputados);      
         
     }
     
-    public static ModeloTabela eliminarPartidosRepetidos(){
+    /*public static ModeloTabela eliminarPartidosRepetidos(){
         ModeloTabela tabela = CamaraDadosAbertos.getTabelaPartidos();
         ControlePartidosRepetidos<Object[]> dados = new ControlePartidosRepetidos<Object[]>();
         String[] colunas = new String[]{"ID", "Sigla", "Nome do Partido"};
@@ -74,6 +54,6 @@ public class ControleTabela {
             }
                 ModeloTabela Modeltabela = new ModeloTabela(dados, colunas);
                 return Modeltabela;
-    }
+    }*/
 }
 
